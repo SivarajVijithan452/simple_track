@@ -32,7 +32,5 @@ Route::middleware('auth')->group(function () {
 });
 
 
-
-
 // Authentication routes
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

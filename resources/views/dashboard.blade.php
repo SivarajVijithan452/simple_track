@@ -12,41 +12,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
-    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
-    
-    <script>
-        // Enable Pusher logging - don't include this in production
-        Pusher.logToConsole = true;
-
-        // Initialize Pusher with your credentials
-        var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
-            cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
-            forceTLS: true // Set to true if you are using HTTPS
-        });
-
-        // Subscribe to the channel
-        var channel = pusher.subscribe('customers');
-
-        // Bind to the event and handle the incoming data
-        channel.bind('CustomerUpdated', function(data) {
-            console.log('Customer Updated:', data);
-            alert('Customer Updated: ' + JSON.stringify(data));
-        });
-
-        channel.bind('CustomerAdded', function(data) {
-            console.log('Customer Added:', data);
-            alert('Customer Added: ' + JSON.stringify(data));
-        });
-
-        channel.bind('CustomerDeleted', function(data) {
-            console.log('Customer Deleted:', data);
-            alert('Customer Deleted: ' + JSON.stringify(data));
-        });
-    </script>
-</head>
-  <heads>
-
 </head>
 
 <body>
@@ -162,7 +127,6 @@
                                     </tr>
                                 @endforeach
                             </tbody>
-
                         </table>
                     </div>
                 </div>
@@ -177,30 +141,30 @@
 
     <!-- Custom JavaScript for displaying messages -->
     <script>
-    // Customize Toastr options
-    toastr.options = {
-        "closeButton": true,
-        "progressBar": true,
-        "positionClass": "toast-top-right",
-        "timeOut": "5000", // Time in milliseconds
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-    };
+        // Customize Toastr options
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "timeOut": "5000", // Time in milliseconds
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
 
-    // Display flash messages
-    @if (session('success'))
-        toastr.success("{{ session('success') }}");
-    @elseif (session('error'))
-        toastr.error("{{ session('error') }}");
-    @elseif (session('info'))
-        toastr.info("{{ session('info') }}");
-    @elseif (session('warning'))
-        toastr.warning("{{ session('warning') }}");
-    @endif
-</script>
+        // Display flash messages
+        @if (session('success'))
+            toastr.success("{{ session('success') }}");
+        @elseif (session('error'))
+            toastr.error("{{ session('error') }}");
+        @elseif (session('info'))
+            toastr.info("{{ session('info') }}");
+        @elseif (session('warning'))
+            toastr.warning("{{ session('warning') }}");
+        @endif
+    </script>
 
 </body>
 
