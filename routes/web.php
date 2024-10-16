@@ -32,5 +32,5 @@ Route::middleware('auth')->group(function () {
 });
 
 
-// Authentication routes
+// Authentication routess
 require __DIR__ . '/auth.php';
